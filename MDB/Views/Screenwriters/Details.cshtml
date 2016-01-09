@@ -1,0 +1,53 @@
+﻿@model MDB.Models.Screenwriter
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container-fluid">
+    <div class="container center-block">
+        <div class="container myContainer">
+            <div class="col-xs-4">
+                <img class="img-responsive" src="@Model.ImgSrc" width="600" height="800" />
+            </div>
+            <div class="col-xs-8">
+                <h1>
+                    @Html.DisplayFor(modelItem => Model.Fullname)
+                </h1>
+            </div>
+
+            <hr class="col-xs-6">
+            <div class="col-xs-6 panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Html.DisplayNameFor(modelItem => Model.Bio)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @Html.DisplayFor(modelItem => Model.Bio)
+                </div>
+            </div>
+        </div>
+        <div class="container myContainer">
+            <div class="col-xs-10 panel panel-info center-block">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Html.DisplayNameFor(modelItem => Model.Movies)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        @foreach (var movie in Model.Movies)
+                        {
+                            <div class="list-group-item col-xs-12">
+                                <div class="smallImgContainer">
+                                    <img class="img-responsive" src="@movie.ImgSrc" width="39" height="64" />
+                                    @Html.ActionLink(@movie.Title, "Details", "Movies", new { id = movie.MovieID }, null)
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
