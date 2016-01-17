@@ -60,3 +60,8 @@ textarea {
 td {
     vertical-align: middle;
 }
+
+.movieTag {
+    margin-left:5px;
+    width:auto;
+}

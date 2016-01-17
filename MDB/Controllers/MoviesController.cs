@@ -8,6 +8,30 @@ using System.Web;
 using System.Web.Mvc;
 using MDB.DAL;
 using MDB.Models;
+using System.Web.Http;
+using static MDB.DAL.ApiClasses;
+
+namespace MDB.ApiControllers
+{
+    public class MoviesController : ApiController
+    {
+        private MdbContext db = new MdbContext();
+        // GET: api/Movies
+        public IQueryable<MovieApi> GetMovies()
+        {
+            return db.Movies
+              .Select(movie => new MovieApi
+              {
+                  MovieID = movie.MovieID,
+                  Image = movie.Image,
+                  Title = movie.Title,
+                  Year = movie.Year,
+                  Description = movie.Description,
+                  Tags = movie.Tags.Select(tag => tag.Name)
+              });
+        }
+    }
+}
 
 namespace MDB.Controllers
 {
@@ -18,7 +42,7 @@ namespace MDB.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            return View();
         }
 
         // GET: Movies/Details/5
@@ -37,6 +61,7 @@ namespace MDB.Controllers
         }
 
         // GET: Movies/Create
+        [System.Web.Mvc.Authorize]
         public ActionResult Create()
         {
             return View();
@@ -45,7 +70,7 @@ namespace MDB.Controllers
         // POST: Movies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MovieID,Image,Title,Year,Description")] Movie movie)
         {
@@ -60,6 +85,7 @@ namespace MDB.Controllers
         }
 
         // GET: Movies/Edit/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,7 +103,7 @@ namespace MDB.Controllers
         // POST: Movies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MovieID,Image,Title,Year,Description")] Movie movie)
         {
@@ -91,6 +117,7 @@ namespace MDB.Controllers
         }
 
         // GET: Movies/Delete/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,7 +133,8 @@ namespace MDB.Controllers
         }
 
         // POST: Movies/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Mvc.Authorize]
+        [System.Web.Mvc.HttpPost, System.Web.Mvc.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -14,9 +14,8 @@ namespace MDB.DAL
         public MdbContext() 
             : base("DefaultConnection") 
         {
-            Database.SetInitializer(new MdbInitializer());
         }
-        
+
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Director> Directors { get; set; }

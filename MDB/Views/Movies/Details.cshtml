@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Details";
 }
+<script>
+    System.defaultJSExtensions = true;
+    System.config({
+        baseURL: '/Scripts/node_modules/'
+    });
+    System.import("/Scripts/App/movie_rating");
+</script>
 <div class="container-fluid">
     <div class="container center-block">
         <div class="container myContainer">
@@ -27,9 +34,9 @@
                 </button>
             </div>
             <div class="col-xs-6 ">
+                <movie-rating></movie-rating>
                 <input type="number" class="rating" data-size="xs" step="1" />
             </div>
-
 
             <div class="btn-group col-xs-4">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

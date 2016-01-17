@@ -39,14 +39,14 @@ namespace MDB.Models
         {
             get
             {
-                /*int sum = 0, i = 0;
+                int sum = 0, i = 0;
+                if (UserMovies == null) return 0f;
                 foreach (UserMovie userMovie in UserMovies)
                 {
                     sum += userMovie.Rating;
                     i++;
-                } 
-                return (float)sum/i;*/
-                return 0f;
+                }
+                return (float)sum/i;
             }
         }
 

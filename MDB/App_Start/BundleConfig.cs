@@ -19,6 +19,13 @@ namespace MDB
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular2").Include(
+                        "~/Scripts/node_modules/es6-shim/es6-shim.js",
+                        "~/Scripts/node_modules/angular2/bundles/angular2-polyfills.js",
+                        "~/Scripts/node_modules/systemjs/system.src.js",
+                        "~/Scripts/node_modules/rxjs/bundles/Rx.js",
+                        "~/Scripts/node_modules/angular2/bundles/angular2.dev.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
