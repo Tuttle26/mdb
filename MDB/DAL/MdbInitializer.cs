@@ -60,6 +60,7 @@ namespace MDB.DAL
             movie4.Screenwriters.Add(screenwriter1);
             */
 
+            //var user = new ApplicationUser() { Id = "50", Email="d@gmail.com", UserMovies=null};
             context.Movies.Add(movie1);
             context.Movies.Add(movie2);
             context.Movies.Add(movie3);

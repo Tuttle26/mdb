@@ -8,7 +8,7 @@
     System.config({
         baseURL: '/Scripts/node_modules/'
     });
-    System.import("/Scripts/App/movie_rating");
+    System.import("/Scripts/App/user_movie");
 </script>
 <div class="container-fluid">
     <div class="container center-block">
@@ -16,11 +16,17 @@
             <div class="col-xs-4">
                 <img class="img-responsive" src="@Model.ImgSrc" width="600" height="800" />
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-6">
                 <h1>
                     @Html.DisplayFor(modelItem => Model.Title)
                     @Html.DisplayFor(modelItem => Model.Year)
                 </h1>
+                
+            </div>
+            <div>
+                <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
             </div>
             <div class="col-xs-6">
                 <ul class="breadcrumb" style="display:inline-block">
@@ -29,27 +35,12 @@
                         <li><a href="#">@tag.Name</a></li>
                     }
                 </ul>
-                <button type="button" class="btn btn-default" aria-label="Right Align">
-                    <span class="glyphicon glyphicon-edit"></span>
-                </button>
             </div>
+            
             <div class="col-xs-6 ">
-                <movie-rating></movie-rating>
-                <input type="number" class="rating" data-size="xs" step="1" />
+                <user-movie></user-movie>
             </div>
 
-            <div class="btn-group col-xs-4">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Add To <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Watched</a></li>
-                    <li><a href="#">To Watch</a></li>
-                    <li><a href="#">Not Interested</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Remove</a></li>
-                </ul>
-            </div>
             <hr class="col-xs-6">
             <div class="col-xs-6 panel panel-info">
                 <div class="panel-heading">
@@ -70,9 +61,6 @@
                                 @Html.ActionLink(@Model.Director.Fullname, "Details", "Directors", new { id = Model.Director.PersonID }, null)
                                 (Director)
                             </div>
-                            <button style="float:right" type="button" class="btn btn-default" aria-label="Right Align">
-                                <span class="glyphicon glyphicon-edit"></span>
-                            </button>
                         </div>
                     </div>
                     <div class="list-group-item col-xs-8">
@@ -82,9 +70,6 @@
                                 @Html.ActionLink(@Model.Screenwriter.Fullname, "Details", "Screenwriters", new { id = Model.Screenwriter.PersonID }, null)
                                 (Screenwriter)
                             </div>
-                            <button type="button" class="btn btn-default" aria-label="Right Align">
-                                <span class="glyphicon glyphicon-edit"></span>
-                            </button>
                         </div>
                     </div>
                 </div>

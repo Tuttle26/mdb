@@ -10,9 +10,10 @@ namespace MDB.Models
     public class UserMovie
     {
 
-        [Range(1, 10)]
+        [Required]
+        [Range(0, 10)]
         public int Rating { get; set; }
-
+        
         [Required]
         public CategoryEnum Category { get; set; }
 
@@ -28,6 +29,6 @@ namespace MDB.Models
 
     public enum CategoryEnum
     {
-        Watched, To_Watch, Not_Interested
+        None, Watched, To_Watch, Not_Interested
     }
 }

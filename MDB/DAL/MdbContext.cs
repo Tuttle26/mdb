@@ -21,5 +21,6 @@ namespace MDB.DAL
         public DbSet<Director> Directors { get; set; }
         public DbSet<Screenwriter> Screenwriters { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<UserMovie> UserMovies { get; set; }
     }
 }

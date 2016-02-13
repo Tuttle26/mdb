@@ -31,5 +31,12 @@ namespace MDB.DAL
             public string Description { get; set; }
             public IEnumerable<TagEnum> Tags { get; set; }
         }
+
+        public class UserMovieApi
+        {
+            public int Rating { get; set; }
+            public int Category { get; set; }
+            public double AvgRating { get; set; }
+        }
     }
 }

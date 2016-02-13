@@ -1258,9 +1258,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\App\Model\MovieItem.ts" />
+    <TypeScriptCompile Include="Scripts\App\Model\UserMovie.ts" />
     <TypeScriptCompile Include="Scripts\App\movie_list.ts" />
-    <TypeScriptCompile Include="Scripts\App\movie_rating.ts" />
+    <TypeScriptCompile Include="Scripts\App\user_movie.ts" />
     <TypeScriptCompile Include="Scripts\App\Services\MoviesService.ts" />
+    <TypeScriptCompile Include="Scripts\App\Services\UserMovieService.ts" />
     <TypeScriptCompile Include="Scripts\node_modules\angular2\animate.d.ts" />
     <TypeScriptCompile Include="Scripts\node_modules\angular2\animate\testing.d.ts" />
     <TypeScriptCompile Include="Scripts\node_modules\angular2\bootstrap.d.ts" />

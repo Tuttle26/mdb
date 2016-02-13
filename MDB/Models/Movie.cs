@@ -35,18 +35,19 @@ namespace MDB.Models
         public int Year { get; set; }
         [StringLength(500)]
         public string Description { get; set; }
-        public float AverageRating
+        public double AverageRating
         {
             get
             {
                 int sum = 0, i = 0;
-                if (UserMovies == null) return 0f;
+                if (UserMovies == null) return 0.0;
                 foreach (UserMovie userMovie in UserMovies)
                 {
                     sum += userMovie.Rating;
                     i++;
                 }
-                return (float)sum/i;
+                if (i == 0) return 0.0;
+                return Math.Round((double)sum/i,2);
             }
         }
 

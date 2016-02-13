@@ -10,6 +10,9 @@ using MDB.DAL;
 using MDB.Models;
 using System.Web.Http;
 using static MDB.DAL.ApiClasses;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using System.Net.Http;
 
 namespace MDB.ApiControllers
 {
@@ -29,6 +32,80 @@ namespace MDB.ApiControllers
                   Description = movie.Description,
                   Tags = movie.Tags.Select(tag => tag.Name)
               });
+        }
+        
+        [System.Web.Http.HttpGet]
+        // GET: api/Movies/UserMovie/2
+        public UserMovieApi UserMovie(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            Movie movie = db.Movies.Find(id);
+            var userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.Find(userId);
+            if (currentUser == null || currentUser.UserMovies == null)
+            {
+                return null;
+                //return new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            if (movie == null)
+            {
+                return null;
+            }
+            var currentUserMovie = currentUser.UserMovies
+                .Where((userMovie) => (userMovie.Movie == movie))
+                .DefaultIfEmpty(null).First();
+            if(currentUserMovie == null)
+            {
+                return new UserMovieApi()
+                {
+                    Rating = 0,
+                    Category = 0,
+                    AvgRating = movie.AverageRating
+                };
+            }
+            return new UserMovieApi(){
+                Rating = currentUserMovie.Rating,
+                Category = (int) currentUserMovie.Category,
+                AvgRating = movie.AverageRating
+            };
+            
+        }
+
+        [System.Web.Http.HttpPost]
+        // POST: api/Movies/UserMovie/2
+        public HttpStatusCodeResult UserMovie(int? id, [Bind(Include = "Rating,Category")] UserMovieApi userMovieApi)
+        {
+            if (id == null || userMovieApi == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Movie movie = db.Movies.Find(id);
+            var userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.Find(userId);
+
+            if (currentUser == null || currentUser.UserMovies == null || movie == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            
+            var currentUserMovie = db.UserMovies.Find(userId, id);
+            if (currentUserMovie != null)
+            {
+                currentUserMovie.Rating = userMovieApi.Rating;
+                currentUserMovie.Category = (CategoryEnum)userMovieApi.Category;
+                db.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+
+            var newUserMovie = new UserMovie() { User = currentUser, Movie = movie, Category = (CategoryEnum)userMovieApi.Category, Rating = userMovieApi.Rating };
+            db.UserMovies.Add(newUserMovie);
+
+            db.SaveChanges();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

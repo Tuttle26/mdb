@@ -65,3 +65,9 @@ td {
     margin-left:5px;
     width:auto;
 }
+.glyphicon.glyphicon-star {
+    font-size: 30px;
+}
+.glyphicon.glyphicon-star-empty {
+    font-size: 30px;
+}
