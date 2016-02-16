@@ -15,7 +15,7 @@ export class UserMovieService {
         this.fetchUserMovie();
     }
 
-    public fetchUserMovie() {
+    private fetchUserMovie() {
 
         let request = this.http.request("http://localhost:57851/api/Movies/UserMovie/" + this.movieId)
 

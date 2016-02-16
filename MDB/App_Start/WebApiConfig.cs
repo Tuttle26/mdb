@@ -19,7 +19,7 @@ namespace MDB
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new {action ="GetMovies", id = RouteParameter.Optional }
+                defaults: new {action ="GetAll", id = RouteParameter.Optional }
             );
         }
     }

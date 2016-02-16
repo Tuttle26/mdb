@@ -29,12 +29,20 @@ textarea {
 }
 
 .myContainer {
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 .list-group-item {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.smallContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    
 }
 
 .smallImgContainer {

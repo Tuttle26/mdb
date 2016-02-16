@@ -30,6 +30,9 @@ namespace MDB.DAL
             public int Year { get; set; }
             public string Description { get; set; }
             public IEnumerable<TagEnum> Tags { get; set; }
+            public int Director { get; set; }
+            public int Screenwriter { get; set; }
+            public IEnumerable<int> Actors { get; set; }
         }
 
         public class UserMovieApi
@@ -37,6 +40,20 @@ namespace MDB.DAL
             public int Rating { get; set; }
             public int Category { get; set; }
             public double AvgRating { get; set; }
+        }
+
+        public class TagApi
+        {
+            public int TagID { get; set; }
+            public TagEnum Name { get; set; }
+            public string RealName { get; set; }
+        }
+
+        public class PersonApi
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+            public string Surname { get; set; }
         }
     }
 }

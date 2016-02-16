@@ -12,6 +12,12 @@ namespace MDB.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        [Display(Name = "Watched")]
+        public IEnumerable<UserMovie> WatchedUserMovies { get; set; }
+        [Display(Name = "To Watch")]
+        public IEnumerable<UserMovie> ToWatchUserMovies { get; set; }
+        [Display(Name = "Not Interested")]
+        public IEnumerable<UserMovie> NotInterestedUserMovies { get; set; }
     }
 
     public class ManageLoginsViewModel

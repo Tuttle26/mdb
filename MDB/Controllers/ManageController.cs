@@ -44,7 +44,10 @@ namespace MDB.Controllers
                 PhoneNumber = await manager.GetPhoneNumberAsync(userId),
                 TwoFactor = await manager.GetTwoFactorEnabledAsync(userId),
                 Logins = await manager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                WatchedUserMovies = db.Users.Find(userId)?.UserMovies.Where((userMovie) => { if (userMovie.Category == CategoryEnum.Watched) return true; return false; }),
+                ToWatchUserMovies = db.Users.Find(userId)?.UserMovies.Where((userMovie) => { if (userMovie.Category == CategoryEnum.To_Watch) return true; return false; }),
+                NotInterestedUserMovies = db.Users.Find(userId)?.UserMovies.Where((userMovie) => { if (userMovie.Category == CategoryEnum.Not_Interested) return true; return false; })
             };
             return View(model);
         }

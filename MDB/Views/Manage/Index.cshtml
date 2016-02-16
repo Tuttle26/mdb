@@ -81,4 +81,70 @@
                 }*@
         </dd>
     </dl>
+    <h3>Movie List</h3>
+    <hr />
+    <div class="container myContainer">
+        <div class="col-xs-10 panel panel-info center-block">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Html.DisplayNameFor(modelItem => Model.WatchedUserMovies)
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="list-group">
+                    @foreach (var watched in Model.WatchedUserMovies)
+                    {
+                        <div class="list-group-item col-xs-12">
+                            <div class="smallImgContainer">
+                                @Html.ActionLink(@watched.Movie.Title, "Details", "Movies", new { id = watched.Movie.MovieID }, null)
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container myContainer">
+        <div class="col-xs-10 panel panel-info center-block">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Html.DisplayNameFor(modelItem => Model.ToWatchUserMovies)
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="list-group">
+                    @foreach (var towatch in Model.ToWatchUserMovies)
+                    {
+                        <div class="list-group-item col-xs-12">
+                            <div class="smallImgContainer">
+                                @Html.ActionLink(@towatch.Movie.Title, "Details", "Movies", new { id = towatch.Movie.MovieID }, null)
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container myContainer">
+        <div class="col-xs-10 panel panel-info center-block">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Html.DisplayNameFor(modelItem => Model.NotInterestedUserMovies)
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="list-group">
+                    @foreach (var notinterested in Model.NotInterestedUserMovies)
+                    {
+                        <div class="list-group-item col-xs-12">
+                            <div class="smallImgContainer">
+                                @Html.ActionLink(@notinterested.Movie.Title, "Details", "Movies", new { id = notinterested.Movie.MovieID }, null)
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

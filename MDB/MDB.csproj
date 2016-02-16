@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\ScreenwritersController.cs" />
+    <Compile Include="Controllers\WebApiController.cs" />
     <Compile Include="DAL\ApiClasses.cs" />
     <Compile Include="DAL\ImageHelper.cs" />
     <Compile Include="DAL\MdbContext.cs" />
@@ -1257,9 +1258,19 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\App\Components\PersonSelector.ts" />
+    <TypeScriptCompile Include="Scripts\App\Components\PersonsSelector.ts" />
+    <TypeScriptCompile Include="Scripts\App\Components\TagSelector.ts" />
     <TypeScriptCompile Include="Scripts\App\Model\MovieItem.ts" />
+    <TypeScriptCompile Include="Scripts\App\Model\PersonItem.ts" />
+    <TypeScriptCompile Include="Scripts\App\Model\TagItem.ts" />
     <TypeScriptCompile Include="Scripts\App\Model\UserMovie.ts" />
+    <TypeScriptCompile Include="Scripts\App\movie_create.ts" />
+    <TypeScriptCompile Include="Scripts\App\movie_edit.ts" />
     <TypeScriptCompile Include="Scripts\App\movie_list.ts" />
+    <TypeScriptCompile Include="Scripts\App\Services\MovieService.ts" />
+    <TypeScriptCompile Include="Scripts\App\Services\PersonsService.ts" />
+    <TypeScriptCompile Include="Scripts\App\Services\TagsService.ts" />
     <TypeScriptCompile Include="Scripts\App\user_movie.ts" />
     <TypeScriptCompile Include="Scripts\App\Services\MoviesService.ts" />
     <TypeScriptCompile Include="Scripts\App\Services\UserMovieService.ts" />
